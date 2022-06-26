@@ -1,10 +1,29 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"github.com/rainu/go-command-chain"
 	"io/ioutil"
 	"net/http"
 )
+
+func PrivatIp() {
+	output := &bytes.Buffer{}
+
+	err := cmdchain.Builder().
+		Join("ipconfig").
+		Join("findstr", "IP").
+		Finalize().
+		WithOutput(output).
+		Run()
+
+	if err != nil {
+		panic(err)
+	}
+
+	println(output.String())
+}
 
 func GetIp() string {
 	ipify, ipapi := http.Get("https://api.ipify.org")
@@ -39,4 +58,5 @@ func main() {
 	} else {
 		fmt.Printf("\t * IPv6 : Not activated\n")
 	}
+	PrivatIp()
 }
