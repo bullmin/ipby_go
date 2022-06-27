@@ -8,20 +8,18 @@ import (
 	"net/http"
 )
 
-func PrivatIp() {
+func GetPrivateIp() {
 	output := &bytes.Buffer{}
 
 	err := cmdchain.Builder().
 		Join("ipconfig").
-		Join("findstr", "IP").
+		Join("findstr", "IPv4").
 		Finalize().
 		WithOutput(output).
 		Run()
-
 	if err != nil {
 		panic(err)
 	}
-
 	println(output.String())
 }
 
@@ -58,5 +56,6 @@ func main() {
 	} else {
 		fmt.Printf("\t * IPv6 : Not activated\n")
 	}
-	PrivatIp()
+
+	GetPrivateIp()
 }
