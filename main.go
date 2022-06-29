@@ -20,7 +20,8 @@ func GetPrivateIp() {
 	if err != nil {
 		panic(err)
 	}
-	println(output.String())
+	var IPoutput = output.String()
+	fmt.Println("\t * IPv4 :", IPoutput[33:50])
 }
 
 func GetIp() string {
@@ -56,6 +57,6 @@ func main() {
 	} else {
 		fmt.Printf("\t * IPv6 : Not activated\n")
 	}
-
+	fmt.Printf("About Private IP\n")
 	GetPrivateIp()
 }
