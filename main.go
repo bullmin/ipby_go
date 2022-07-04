@@ -23,9 +23,15 @@ func GetPrivateIp() {
 	}
 
 	m := strings.Split(output.String(), ":")
-	//n := strings.Split(m[1], "\n")
-	fmt.Printf("\t * IPv4 : %s\n", m[1][0:16])
-	fmt.Printf("\t * IPv4 : %s\n", m[2])
+
+	for n, o := range m {
+		if n >= 1 {
+			fmt.Printf("\t * IPv4 : %s\n", o[0:15])
+		}
+	}
+
+	//fmt.Printf("\t * IPv4 : %s\n", m[1][0:16])
+	//fmt.Printf("\t * IPv4 : %s\n", m[2])
 }
 
 func GetIp() string {
