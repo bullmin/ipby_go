@@ -6,6 +6,7 @@ import (
 	"github.com/rainu/go-command-chain"
 	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 func GetPrivateIp() {
@@ -20,8 +21,11 @@ func GetPrivateIp() {
 	if err != nil {
 		panic(err)
 	}
-	var IPoutput = output.String()
-	fmt.Println("\t * IPv4 :", IPoutput[33:50])
+
+	m := strings.Split(output.String(), ":")
+	//n := strings.Split(m[1], "\n")
+	fmt.Printf("\t * IPv4 : %s\n", m[1][0:16])
+	fmt.Printf("\t * IPv4 : %s\n", m[2])
 }
 
 func GetIp() string {
