@@ -26,7 +26,7 @@ func GetPrivateIp() {
 
 	for n, o := range m {
 		if n >= 1 {
-			fmt.Printf("\t * IPv4 : %s\n", o[0:16])
+			fmt.Printf("\t * IPv4 : %s\n", o[0:15])
 		}
 	}
 
